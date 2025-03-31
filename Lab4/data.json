@@ -1,0 +1,34 @@
+[
+    {
+      "testName": "global",
+      "data": {
+        "url": "https://bookstore.qacurry.com",
+        "bookURL": "https://bookstore.qacurry.com/moreInfo.php?id=4"
+      }
+    },
+    {
+      "testName": "tc001",
+      "data": {
+        "username": "student@qacurry.com",
+        "password": "Q@curry",
+        "expectedText": "Hello Student"
+      }
+    },
+    {
+        "testName": "tc002",
+        "data": {
+          "username": "student@qacurry.com",
+          "password": "Q@curry1",
+          "expectedText": "Your Login Name or Password is invalid"
+        }
+    },
+    {
+      "testName": "tc007",
+        "data": {
+            "username": "student@qacurry.com",
+            "password": "Q@curry",
+            "bookUrl": "https://bookstore.qacurry.com/moreInfo.php?id=2",
+            "expectedText": "Your order has submitted successfully."
+        }
+  }
+  ]

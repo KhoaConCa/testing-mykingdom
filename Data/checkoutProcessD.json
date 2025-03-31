@@ -1,0 +1,23 @@
+[
+    {
+        "testName": "PAY-PASS01",
+        "data":{
+            "email": "xxx@yopmail.com",
+            "province": "Hồ Chí Minh",
+            "district": "Thành phố Thủ Đức",
+            "commune": "Phường An Khánh",
+            "country": "Việt Nam",
+            "firstName": "An",
+            "lastName": "Nguyen",
+            "address": "21, đường 2",
+            "postalCode": 700000,
+            "phoneNumber": "0766315445"
+        }
+    },
+    {
+        "testName": "PAY-PASS02",
+        "data":{
+
+        }
+    }
+]

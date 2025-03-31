@@ -1,0 +1,71 @@
+[
+    {
+        "testName": "REG-PASS01",
+        "data":{
+            "firstName": "Điêu",
+            "lastName": "Xà",
+            "phoneNumber": "0123456789",
+            "sex": "Nam",
+            "email": "xyz@yopmail.com",
+            "password": "xyzhehe",
+            "repassword": "xyzhehe"
+        }
+    },
+    {
+        "testName": "REG-EMPTY01",
+        "data":{
+            "firstName": "Mập",
+            "lastName": "Lỗ",
+            "phoneNumber": "",
+            "sex": "Nam",
+            "email": "yugioh@yopmail.com",
+            "password": "yugioh123",
+            "repassword": "yugioh123"
+        }
+    },
+    {
+        "testName": "REG-EMPTY02",
+        "data":{
+            "firstName": "Mẫn",
+            "lastName": "Cầu",
+            "phoneNumber": "0987654321",
+            "sex": "Nam",
+            "email": "",
+            "password": "vuachochoi",
+            "repassword": "vuachochoi"
+        }
+    },
+    {
+        "testName": "REG-ERR01",
+        "data":{
+            "firstName": "Phương Y",
+            "lastName": "Phánh",
+            "phoneNumber": {
+                "less10":  "081235",
+                "more13": "01293847567483",
+                "word": "yeuquai",
+                "special": "<0828><12>"
+            },
+            "sex": "Nam",
+            "email": "nanicure@yopmail.com",
+            "password": "eeetutubane",
+            "repassword": "eeetutubane"
+        }
+    },
+    {
+        "testName": "REG-ERR02",
+        "data":{
+            "firstName": "Tài",
+            "lastName": "Long",
+            "phoneNumber": "0912835600",
+            "sex": "Nam",
+            "email": {
+                "format": "@lanconcoc.com",
+                "more20": "oixoioibonguoita3conma@yahoo.com",
+                "blank": "troi oitoi@outlook.com"
+            },
+            "password": "bomaylaconech",
+            "repassword": "bomaylaconech"
+        }
+    }
+]

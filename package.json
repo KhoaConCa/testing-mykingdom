@@ -1,0 +1,26 @@
+{
+  "name": "testing-mykingdom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KhoaConCa/testing-mykingdom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KhoaConCa/testing-mykingdom/issues"
+  },
+  "homepage": "https://github.com/KhoaConCa/testing-mykingdom#readme",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "chai": "^5.2.0",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "selenium-webdriver": "^4.30.0"
+  }
+}
