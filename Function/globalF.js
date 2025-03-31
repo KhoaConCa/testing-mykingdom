@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const dataFilePath = "../Data/registerD.json";
 
-var readData = async function (tcName) {
+var readGlobalData = async function (tcName) {
   const content = fs.readFileSync(dataFilePath);
   const obj = JSON.parse(content);
   for (let index = 0; index < obj.length; index++) {
@@ -13,4 +13,4 @@ var readData = async function (tcName) {
   }
 };
 
-readData("REG-PASS01");
+module.exports = { readGlobalData }
