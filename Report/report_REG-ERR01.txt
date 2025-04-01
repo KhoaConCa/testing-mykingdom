@@ -1,0 +1,128 @@
+========================
+Testcase: REG-ERR01
+Dữ liệu: {
+  "firstName": "Phương Y",
+  "lastName": "Phánh",
+  "phoneNumber": [
+    {
+      "id": "less10",
+      "value": "081235"
+    }
+  ],
+  "sex": "Nam",
+  "email": "nanicure@yopmail.com",
+  "password": "eeetutubane",
+  "repassword": "eeetutubane"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+- Bước 13: Failed
+Tổng kết: Thất bại
+========================
+========================
+Testcase: REG-ERR01
+Dữ liệu: {
+  "firstName": "Phương Y",
+  "lastName": "Phánh",
+  "phoneNumber": [
+    {
+      "id": "more13",
+      "value": "01293847567483"
+    }
+  ],
+  "sex": "Nam",
+  "email": "nanicure@yopmail.com",
+  "password": "eeetutubane",
+  "repassword": "eeetutubane"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+- Bước 13: Failed
+Tổng kết: Thất bại
+========================
+========================
+Testcase: REG-ERR01
+Dữ liệu: {
+  "firstName": "Phương Y",
+  "lastName": "Phánh",
+  "phoneNumber": [
+    {
+      "id": "word",
+      "value": "yeuquai"
+    }
+  ],
+  "sex": "Nam",
+  "email": "nanicure@yopmail.com",
+  "password": "eeetutubane",
+  "repassword": "eeetutubane"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+- Bước 13: Failed
+Tổng kết: Thất bại
+========================
+========================
+Testcase: REG-ERR01
+Dữ liệu: {
+  "firstName": "Phương Y",
+  "lastName": "Phánh",
+  "phoneNumber": [
+    {
+      "id": "special",
+      "value": "<0828><12>"
+    }
+  ],
+  "sex": "Nam",
+  "email": "nanicure@yopmail.com",
+  "password": "eeetutubane",
+  "repassword": "eeetutubane"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+- Bước 13: Failed
+Tổng kết: Thất bại
+========================

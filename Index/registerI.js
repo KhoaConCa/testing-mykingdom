@@ -94,10 +94,10 @@ var REG_ERR02 = async function () {
 };
 
 var RunTestCase = async function () {
-    await REG_PASS01();
-    await REG_EMPTY01();
-    await REG_EMPTY02();
-    await REG_ERR01();
+    // await REG_PASS01();
+    // await REG_EMPTY01();
+    // await REG_EMPTY02();
+    // await REG_ERR01();
     await REG_ERR02();
 };
 

@@ -1,0 +1,135 @@
+========================
+Testcase: REG-ERR02
+Dữ liệu: {
+  "firstName": "Tài",
+  "lastName": "Long",
+  "phoneNumber": [
+    {
+      "id": "format",
+      "value": "@lanconcoc.com"
+    }
+  ],
+  "sex": "Nam",
+  "email": [
+    {
+      "id": "format",
+      "value": "@lanconcoc.com"
+    },
+    {
+      "id": "more20",
+      "value": "oixoioibonguoita3conma@yahoo.com"
+    },
+    {
+      "id": "blank",
+      "value": "troi oitoi@outlook.com"
+    }
+  ],
+  "password": "bomaylaconech",
+  "repassword": "bomaylaconech"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+- Bước 13: Failed
+Tổng kết: Thất bại
+========================
+========================
+Testcase: REG-ERR02
+Dữ liệu: {
+  "firstName": "Tài",
+  "lastName": "Long",
+  "phoneNumber": [
+    {
+      "id": "more20",
+      "value": "oixoioibonguoita3conma@yahoo.com"
+    }
+  ],
+  "sex": "Nam",
+  "email": [
+    {
+      "id": "format",
+      "value": "@lanconcoc.com"
+    },
+    {
+      "id": "more20",
+      "value": "oixoioibonguoita3conma@yahoo.com"
+    },
+    {
+      "id": "blank",
+      "value": "troi oitoi@outlook.com"
+    }
+  ],
+  "password": "bomaylaconech",
+  "repassword": "bomaylaconech"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+- Bước 13: Failed
+Tổng kết: Thất bại
+========================
+========================
+Testcase: REG-ERR02
+Dữ liệu: {
+  "firstName": "Tài",
+  "lastName": "Long",
+  "phoneNumber": [
+    {
+      "id": "blank",
+      "value": "troi oitoi@outlook.com"
+    }
+  ],
+  "sex": "Nam",
+  "email": [
+    {
+      "id": "format",
+      "value": "@lanconcoc.com"
+    },
+    {
+      "id": "more20",
+      "value": "oixoioibonguoita3conma@yahoo.com"
+    },
+    {
+      "id": "blank",
+      "value": "troi oitoi@outlook.com"
+    }
+  ],
+  "password": "bomaylaconech",
+  "repassword": "bomaylaconech"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+- Bước 13: Failed
+Tổng kết: Thất bại
+========================
