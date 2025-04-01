@@ -28,7 +28,7 @@
         "data":{
             "firstName": "Mẫn",
             "lastName": "Cầu",
-            "phoneNumber": "0987654321",
+            "phoneNumber": "0111111111",
             "sex": "Nam",
             "email": "",
             "password": "vuachochoi",
@@ -40,12 +40,24 @@
         "data":{
             "firstName": "Phương Y",
             "lastName": "Phánh",
-            "phoneNumber": {
-                "less10":  "081235",
-                "more13": "01293847567483",
-                "word": "yeuquai",
-                "special": "<0828><12>"
-            },
+            "phoneNumber": [
+                {
+                    "id": "less10",
+                    "value": "081235"
+                }, 
+                {
+                    "id": "more13",
+                    "value": "01293847567483"
+                },
+                {
+                    "id": "word",
+                    "value": "yeuquai"
+                },
+                {
+                    "id": "special",
+                    "value": "<0828><12>"
+                }
+            ],
             "sex": "Nam",
             "email": "nanicure@yopmail.com",
             "password": "eeetutubane",
@@ -59,11 +71,20 @@
             "lastName": "Long",
             "phoneNumber": "0912835600",
             "sex": "Nam",
-            "email": {
-                "format": "@lanconcoc.com",
-                "more20": "oixoioibonguoita3conma@yahoo.com",
-                "blank": "troi oitoi@outlook.com"
-            },
+            "email": [
+                {
+                    "id": "format",
+                    "value": "@lanconcoc.com"
+                }, 
+                {
+                    "id": "more20",
+                    "value": "oixoioibonguoita3conma@yahoo.com"
+                },
+                {
+                    "id": "blank",
+                    "value": "troi oitoi@outlook.com"
+                }
+            ],
             "password": "bomaylaconech",
             "repassword": "bomaylaconech"
         }
