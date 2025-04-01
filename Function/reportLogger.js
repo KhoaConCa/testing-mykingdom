@@ -6,12 +6,10 @@ class ReportLogger {
         this.testCaseID = testCaseID;
         this.inputData = inputData;
         this.steps = [];
-        this.isBlocked = false; // Cờ để block bước tiếp theo nếu có lỗi
+        this.isBlocked = false;
 
-        // Đường dẫn thư mục lưu report
         this.reportDirectory = "../Report";
 
-        // Tạo thư mục nếu chưa tồn tại
         if (!fs.existsSync(this.reportDirectory)) {
             fs.mkdirSync(this.reportDirectory, { recursive: true });
         }
@@ -25,7 +23,7 @@ class ReportLogger {
             status = "Succeed";
         } else {
             status = "Failed";
-            this.isBlocked = true; // Block các bước sau nếu có lỗi
+            this.isBlocked = true;
         }
 
         console.log(`${stepDescription}: ${status}`);
@@ -34,6 +32,12 @@ class ReportLogger {
 
     generateReport() {
         let reportPath = path.join(this.reportDirectory, `report_${this.testCaseID}.txt`);
+
+        if (fs.existsSync(reportPath)) {
+            console.log(`Báo cáo đã tồn tại: ${reportPath}`);
+            return;
+        }
+
         let result = this.steps.some(step => step.status === "Failed") ? "Thất bại" : "Thành công";
 
         let reportContent = `========================\n`;
@@ -49,7 +53,7 @@ class ReportLogger {
         reportContent += `========================\n`;
 
         fs.writeFileSync(reportPath, reportContent, "utf8");
-        console.log(`📄 Báo cáo đã được lưu tại: ${reportPath}`);
+        console.log(`Báo cáo đã được lưu tại: ${reportPath}`);
     }
 }
 

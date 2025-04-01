@@ -1,0 +1,26 @@
+========================
+Testcase: REG-PASS01
+Dữ liệu: {
+  "firstName": "Điêu",
+  "lastName": "Xà",
+  "phoneNumber": "0953622489",
+  "sex": "Nam",
+  "email": "xybs132@yopmail.com",
+  "password": "xyzhehe",
+  "repassword": "xyzhehe"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+Tổng kết: Thành công
+========================
