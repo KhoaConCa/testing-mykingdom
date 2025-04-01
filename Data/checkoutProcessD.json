@@ -17,7 +17,16 @@
     {
         "testName": "PAY-PASS02",
         "data":{
-
+            "email": "abc123@yopmail.com",
+            "province": "Yên Bái",
+            "district": "Văn Chấn",
+            "commune": "An Lương",
+            "country": "Việt Nam",
+            "firstName": "Duy",
+            "lastName": "Xui",
+            "address": "21, đường 2",
+            "postalCode": 700000,
+            "phoneNumber": "0964825812"
         }
     }
 ]
