@@ -56,7 +56,7 @@ var NavigatePage = async function (driver) {
         );
     await cardB.click();
     await driver.sleep(5000);
-};
+}
 
 var InputValueWithoutLogin = async function (driver, data) {
     await driver.findElement(By.xpath("//input[@id='email']")).sendKeys(data.data.email);
