@@ -39,7 +39,10 @@ class LoginBase {
         try {
             await this.driver.findElement(By.xpath("//input[@id='CustomerEmail']")).sendKeys(loginData.data.email);
             await this.driver.findElement(By.xpath("//input[@id='CustomerPassword']")).sendKeys(loginData.data.password);
+            await this.driver.sleep(5000);
             await this.driver.findElement(By.xpath("//button[contains(text(),'Đăng nhập')]")).click();
+            await this.driver.sleep(15000);
+            console.log("Đã click");
         } catch (error) {
             console.error("Lỗi khi nhập thông tin đăng nhập:", error);
         } finally {
