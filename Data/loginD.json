@@ -2,14 +2,14 @@
     {
         "testName": "LOG-PASS01",
         "data":{
-            "email": "xxx@yopmail.com",
+            "email": "abc123@yopmail.com",
             "password": "xxx@1234"
         }
     },
     {
         "testName": "LOG-ERR01",
         "data":{
-            "email": "xxx@yopmail.com",
+            "email": "abc123@yopmail.com",
             "password": "xxx1234"
         }
     },
