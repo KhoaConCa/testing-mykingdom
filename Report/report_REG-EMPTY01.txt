@@ -1,0 +1,27 @@
+========================
+Testcase: REG-EMPTY01
+Dữ liệu: {
+  "firstName": "Mập",
+  "lastName": "Lỗ",
+  "phoneNumber": "",
+  "sex": "Nam",
+  "email": "yugioh@yopmail.com",
+  "password": "yugioh123",
+  "repassword": "yugioh123"
+}
+Thứ tự các bước:
+- Bước 1: Succeed
+- Bước 2: Succeed
+- Bước 3: Succeed
+- Bước 4: Succeed
+- Bước 5: Succeed
+- Bước 6: Succeed
+- Bước 7: Succeed
+- Bước 8: Succeed
+- Bước 9: Succeed
+- Bước 10: Succeed
+- Bước 11: Succeed
+- Bước 12: Succeed
+- Bước 13: Failed
+Tổng kết: Thất bại
+========================

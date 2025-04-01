@@ -2,6 +2,53 @@ const { By, until } = require("selenium-webdriver");
 var { readGlobalData } = require("./globalF");
 const ReportLogger = require("./reportLogger");
 
+var readAlert = async function (driver) {
+    let alertText = "";
+    try {
+        let alert = await driver.switchTo().alert();
+        
+        alertText = await alert.getText();
+        console.log("Nội dung của Alert:", alertText);
+        
+        await alert.accept();
+        return alertText;
+    } catch (error) {
+        console.error("Không tìm thấy Alert hoặc lỗi khác:", error.message);
+    }
+}
+
+var checkRegisterEmty01 = async function (driver) {
+    var phoneNumberNotice = "Vui lòng nhập chính xác số điện thoại của bạn";
+    try {
+        let alertText = await readAlert(driver);
+        return alertText === phoneNumberNotice;
+    } catch (error) {
+        console.error("Lỗi khi kiểm tra thông báo:", error.message);
+        return false;
+    }
+
+    // try {
+    //     let realNoticeElement = await driver.findElement(By.xpath("//div[@id='confirm-text']"));
+    //     let realNotice = await realNoticeElement.getText();
+    //     return realNotice === phoneNumberNotice;
+    // } catch (error) {
+    //     console.error("Lỗi khi kiểm tra thông báo:", error.message);
+    //     return false;
+    // }
+};
+
+var checkRegisterEmty02 = async function () {
+
+}
+
+var checkRegisterErr01 = async function () {
+
+}
+
+var checkRegisterErr02 = async function () {
+
+}
+
 var TestRegisterPass = async function (driver) {
     let regPass01 = await readGlobalData("register", "REG-PASS01");
     let logger = new ReportLogger("REG-PASS01", regPass01.data);
@@ -10,7 +57,6 @@ var TestRegisterPass = async function (driver) {
         logger.logStep("Step 1: Truy cập trang chủ", await Step1(driver));
         logger.logStep("Step 2: Nhấn vào nút đăng nhập", await Step2(driver));
         logger.logStep("Step 3: Nhấn vào nút đăng ký", await Step3(driver));
-
         logger.logStep("Step 4: Nhập Họ", await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regPass01.data.firstName));
         logger.logStep("Step 5: Nhập Tên", await StepInputField("//input[@id='RegisterForm-LastName']", driver, regPass01.data.lastName));
         logger.logStep("Step 6: Nhập Số điện thoại", await StepInputField("//input[@id='RegisterForm-phone']", driver, regPass01.data.phoneNumber));
@@ -20,6 +66,8 @@ var TestRegisterPass = async function (driver) {
         logger.logStep("Step 10: Nhập lại Mật khẩu", await StepInputField("//input[@id='confirm-password']", driver, regPass01.data.repassword));
         logger.logStep("Step 11: Chấp nhận điều khoản", await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver));
         logger.logStep("Step 12: Nhấn vào nút Đăng ký", await Step12("//button[@id='register-button']", driver));
+        console.log(await checkRegisterEmty01(driver));
+        logger.logStep("Step 13: Kiểm tra kết quả trả về", await checkRegisterEmty01(driver));
 
         await driver.sleep(10000);
     } catch (error) {
@@ -30,50 +78,30 @@ var TestRegisterPass = async function (driver) {
 };
 
 var TestRegisterEmpty01 = async function (driver) {
+    let regEmpty01 = await readGlobalData("register", "REG-EMPTY01");
+    let logger = new ReportLogger("REG-EMPTY01", regEmpty01.data);
+
     try {
-
-        // Step 1.
-        await Step1(driver);
-
-        // Step 2.
-        await Step2(driver);
-
-        // Step 3.
-        await Step3(driver);
-
-        let regPass01 = await readGlobalData("register", "REG-EMPTY01");
-
-        // Step 4.
-        await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regPass01.data.firstName);
-
-        // Step 5.
-        await StepInputField("//input[@id='RegisterForm-LastName']", driver, regPass01.data.lastName);
-
-        // Step 6.
-        await StepInputField("//input[@id='RegisterForm-phone']", driver, regPass01.data.phoneNumber);
-
-        // Step 7.
-        await StepComboBox("//select[@id='gender']", driver, regPass01.data.sex);
-
-        // Step 8.
-        await StepInputField("//input[@id='RegisterForm-email']", driver, regPass01.data.email);
-
-        // Step 9.
-        await StepInputField("//input[@id='RegisterForm-password']", driver, regPass01.data.password);
-
-        // Step 10.
-        await StepInputField("//input[@id='confirm-password']", driver, regPass01.data.repassword);
-
-        // Step 11.
-        await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver);
-
-        await Step12("//button[@id='register-button']", driver);
+        logger.logStep("Step 1: Truy cập trang chủ", await Step1(driver));
+        logger.logStep("Step 2: Nhấn vào nút đăng nhập", await Step2(driver));
+        logger.logStep("Step 3: Nhấn vào nút đăng ký", await Step3(driver));
+        logger.logStep("Step 4: Nhập Họ", await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regEmpty01.data.firstName));
+        logger.logStep("Step 5: Nhập Tên", await StepInputField("//input[@id='RegisterForm-LastName']", driver, regEmpty01.data.lastName));
+        logger.logStep("Step 6: Nhập Số điện thoại", await StepInputField("//input[@id='RegisterForm-phone']", driver, regEmpty01.data.phoneNumber));
+        logger.logStep("Step 7: Chọn Giới tính", await StepComboBox("//select[@id='gender']", driver, regEmpty01.data.sex));
+        logger.logStep("Step 8: Nhập Email", await StepInputField("//input[@id='RegisterForm-email']", driver, regEmpty01.data.email));
+        logger.logStep("Step 9: Nhập Mật khẩu", await StepInputField("//input[@id='RegisterForm-password']", driver, regEmpty01.data.password));
+        logger.logStep("Step 10: Nhập lại Mật khẩu", await StepInputField("//input[@id='confirm-password']", driver, regEmpty01.data.repassword));
+        logger.logStep("Step 11: Chấp nhận điều khoản", await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver));
+        logger.logStep("Step 12: Nhấn vào nút Đăng ký", await Step12("//button[@id='register-button']", driver));
+        logger.logStep("Step 13: Kiểm tra kết quả trả về", await checkRegisterEmty01(driver));
 
         await driver.sleep(10000);
-    
-      } catch (error) {
-        throw new Error(`REG-PASS01: ${error.message}`);
-      }
+    } catch (error) {
+        logger.logStep(`Lỗi xảy ra: ${error.message}`, false);
+    } finally {
+        logger.generateReport();
+    }
 };
 
 // Step 1
