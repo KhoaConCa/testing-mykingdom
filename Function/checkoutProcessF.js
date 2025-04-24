@@ -19,26 +19,21 @@ var TestPaymentWithoutLogin = async function (driver) {
 };
 
 var NavigatePage = async function (driver) {
-
-  // Nhập một sản phẩm vào textbox.
   await driver
       .findElement(By.xpath("//input[contains(@Class, 'search__input field__input boost-sd__search-widget-init-input')]"))
       .sendKeys("robot");
 
-    // Chờ load danh sách gợi ý.
     await driver
       .wait(until
         .elementLocated(By.xpath(
           "//ul[@class='boost-sd__instant-search-product-list-items']//li")), 
           5000);
     
-    // Mở trang sản phẩm.
     let urlPro = await driver
       .findElement(By.xpath("//a[@class='boost-sd__suggestion-queries-item-link']"))
       .getAttribute("href");
     await driver.get(urlPro);
 
-    // Nhấn vào 'Thêm vào giở hàng'.
     let addCardB = await driver
       .wait(until.elementLocated(
         By.xpath(
@@ -47,7 +42,6 @@ var NavigatePage = async function (driver) {
     await addCardB.click();
     await driver.sleep(5000);
 
-    // Nhấn vào giở hàng.
     let cardB = await driver
       .wait(until.elementLocated(
         By.xpath(

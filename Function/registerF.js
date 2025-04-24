@@ -177,19 +177,16 @@ var TestRegisterError01 = async function (driver) {
             let phoneId = item.id;
             let phoneValue = item.value;
 
-            console.log(`\n🔍 Đang kiểm tra với Số điện thoại: [${phoneId}] = ${phoneValue}`);
+            console.log(`\nĐang kiểm tra với Số điện thoại: [${phoneId}] = ${phoneValue}`);
 
-            // Tạo dữ liệu cho iteration này
             let iterationData = {
                 ...regErr01.data,
                 phoneNumber: [{ id: phoneId, value: phoneValue }]
             };
 
-            // Reset steps và isBlocked trước mỗi iteration
             logger.steps = [];
             logger.isBlocked = false;
 
-            // Thực hiện các bước cho iteration này
             logger.logStep("Step 1: Truy cập trang chủ", await Step1(driver));
             logger.logStep("Step 2: Nhấn vào nút đăng nhập", await Step2(driver));
             logger.logStep("Step 3: Nhấn vào nút đăng ký", await Step3(driver));
@@ -225,7 +222,7 @@ var TestRegisterError02 = async function (driver) {
             let emailId = item.id;
             let emailValue = item.value;
 
-            console.log(`\n🔍 Đang kiểm tra với Số điện thoại: [${emailId}] = ${emailValue}`);
+            console.log(`\nĐang kiểm tra với Số điện thoại: [${emailId}] = ${emailValue}`);
 
             let iterationData = {
                 ...regErr02.data,

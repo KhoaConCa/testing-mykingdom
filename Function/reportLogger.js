@@ -15,7 +15,6 @@ class ReportLogger {
         }
 
         this.reportPath = path.join(this.reportDirectory, `report_${this.testCaseID}.txt`);
-        // Xóa file cũ nếu tồn tại
         if (fs.existsSync(this.reportPath)) {
             fs.unlinkSync(this.reportPath);
         }
