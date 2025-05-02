@@ -6,7 +6,7 @@ const {
     TestRegisterEmpty01, 
     TestRegisterEmpty02, 
     TestRegisterError01,
-    TestRegisterError02 } = require("../Function/registerF");
+    TestRegisterError02 } = require("../Function/registerF");   
 
 var REG_PASS01 = async function () {
     let driver = await new Builder()

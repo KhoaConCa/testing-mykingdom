@@ -53,7 +53,6 @@ class ReportLogger {
         fs.appendFileSync(this.reportPath, reportContent, "utf8");
         console.log(`Báo cáo iteration đã được ghi tại: ${this.reportPath}`);
 
-        // Reset steps và isBlocked cho iteration tiếp theo
         this.steps = [];
         this.isBlocked = false;
     }
