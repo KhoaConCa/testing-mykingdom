@@ -85,26 +85,51 @@ var TestRegisterPass = async function (driver) {
     let logger = new ReportLogger("REG-PASS01", regPass01.data);
 
     let checkArlert = false;
+    let previousStep = true;
 
     try {
-        logger.logStep("Step 1: Truy cập trang chủ", await Step1(driver));
-        logger.logStep("Step 2: Nhấn vào nút đăng nhập", await Step2(driver));
-        logger.logStep("Step 3: Nhấn vào nút đăng ký", await Step3(driver));
+        previousStep = await Step1(driver);
+        logger.logStep("Step 1: Truy cập trang chủ", previousStep);
+
+        previousStep = await Step2(driver, previousStep);
+        logger.logStep("Step 2: Nhấn vào nút đăng nhập", previousStep);
+
+        previousStep = await Step3(driver, previousStep);
+        logger.logStep("Step 3: Nhấn vào nút đăng ký", previousStep);
 
         let beforeUrl = await driver.getCurrentUrl();
         console.log(beforeUrl);
-        logger.logStep("Step 4: Nhập Họ", await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regPass01.data.firstName));
-        logger.logStep("Step 5: Nhập Tên", await StepInputField("//input[@id='RegisterForm-LastName']", driver, regPass01.data.lastName));
-        logger.logStep("Step 6: Nhập Số điện thoại", await StepInputField("//input[@id='RegisterForm-phone']", driver, regPass01.data.phoneNumber));
-        logger.logStep("Step 7: Chọn Giới tính", await StepComboBox("//select[@id='gender']", driver, regPass01.data.sex));
-        logger.logStep("Step 8: Nhập Email", await StepInputField("//input[@id='RegisterForm-email']", driver, regPass01.data.email));
-        logger.logStep("Step 9: Nhập Mật khẩu", await StepInputField("//input[@id='RegisterForm-password']", driver, regPass01.data.password));
-        logger.logStep("Step 10: Nhập lại Mật khẩu", await StepInputField("//input[@id='confirm-password']", driver, regPass01.data.repassword));
-        logger.logStep("Step 11: Chấp nhận điều khoản", await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver));
-        logger.logStep("Step 12: Nhấn vào nút Đăng ký", await Step12("//button[@id='register-button']", driver));
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regPass01.data.firstName, previousStep);
+        logger.logStep("Step 4: Nhập Họ", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-LastName']", driver, regPass01.data.lastName, previousStep);
+        logger.logStep("Step 5: Nhập Tên", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-phone']", driver, regPass01.data.phoneNumber, previousStep);
+        logger.logStep("Step 6: Nhập Số điện thoại", previousStep);
+
+        previousStep = await StepComboBox("//select[@id='gender']", driver, regPass01.data.sex, previousStep);
+        logger.logStep("Step 7: Chọn Giới tính", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-email']", driver, regPass01.data.email, previousStep);
+        logger.logStep("Step 8: Nhập Email", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-password']", driver, regPass01.data.password, previousStep);
+        logger.logStep("Step 9: Nhập Mật khẩu", previousStep);
+
+        previousStep = await StepInputField("//input[@id='confirm-password']", driver, regPass01.data.repassword, previousStep);
+        logger.logStep("Step 10: Nhập lại Mật khẩu", previousStep);
+
+        previousStep = await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver, previousStep);
+        logger.logStep("Step 11: Chấp nhận điều khoản", previousStep);
+
+        previousStep = await Step12("//button[@id='register-button']", driver, previousStep);
+        logger.logStep("Step 12: Nhấn vào nút Đăng ký", previousStep);
 
         checkArlert = await driver.switchTo().alert();
-        await checkArlert.accept();
+        if(checkArlert)
+            await checkArlert.accept();
         
         await driver.sleep(10000);
     } catch (error) {
@@ -121,20 +146,43 @@ var TestRegisterPass = async function (driver) {
 var TestRegisterEmpty01 = async function (driver) {
     let regEmpty01 = await readGlobalData("register", "REG-EMPTY01");
     let logger = new ReportLogger("REG-EMPTY01", regEmpty01.data);
-
+    let previousStep = true;
     try {
-        logger.logStep("Step 1: Truy cập trang chủ", await Step1(driver));
-        logger.logStep("Step 2: Nhấn vào nút đăng nhập", await Step2(driver));
-        logger.logStep("Step 3: Nhấn vào nút đăng ký", await Step3(driver));
-        logger.logStep("Step 4: Nhập Họ", await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regEmpty01.data.firstName));
-        logger.logStep("Step 5: Nhập Tên", await StepInputField("//input[@id='RegisterForm-LastName']", driver, regEmpty01.data.lastName));
-        logger.logStep("Step 6: Nhập Số điện thoại", await StepInputField("//input[@id='RegisterForm-phone']", driver, regEmpty01.data.phoneNumber));
-        logger.logStep("Step 7: Chọn Giới tính", await StepComboBox("//select[@id='gender']", driver, regEmpty01.data.sex));
-        logger.logStep("Step 8: Nhập Email", await StepInputField("//input[@id='RegisterForm-email']", driver, regEmpty01.data.email));
-        logger.logStep("Step 9: Nhập Mật khẩu", await StepInputField("//input[@id='RegisterForm-password']", driver, regEmpty01.data.password));
-        logger.logStep("Step 10: Nhập lại Mật khẩu", await StepInputField("//input[@id='confirm-password']", driver, regEmpty01.data.repassword));
-        logger.logStep("Step 11: Chấp nhận điều khoản", await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver));
-        logger.logStep("Step 12: Nhấn vào nút Đăng ký", await Step12("//button[@id='register-button']", driver));
+        previousStep = await Step1(driver);
+        logger.logStep("Step 1: Truy cập trang chủ", previousStep);
+
+        previousStep = await Step2(driver, previousStep);
+        logger.logStep("Step 2: Nhấn vào nút đăng nhập", previousStep);
+
+        previousStep = await Step3(driver, previousStep);
+        logger.logStep("Step 3: Nhấn vào nút đăng ký", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regEmpty01.data.firstName, previousStep);
+        logger.logStep("Step 4: Nhập Họ", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-LastName']", driver, regEmpty01.data.lastName, previousStep);
+        logger.logStep("Step 5: Nhập Tên", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-phone']", driver, regEmpty01.data.phoneNumber, previousStep);
+        logger.logStep("Step 6: Nhập Số điện thoại", previousStep);
+
+        previousStep = await StepComboBox("//select[@id='gender']", driver, regEmpty01.data.sex, previousStep);
+        logger.logStep("Step 7: Chọn Giới tính", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-email']", driver, regEmpty01.data.email, previousStep);
+        logger.logStep("Step 8: Nhập Email", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-password']", driver, regEmpty01.data.password, previousStep);
+        logger.logStep("Step 9: Nhập Mật khẩu", previousStep);
+
+        previousStep = await StepInputField("//input[@id='confirm-password']", driver, regEmpty01.data.repassword, previousStep);
+        logger.logStep("Step 10: Nhập lại Mật khẩu", previousStep);
+
+        previousStep = await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver, previousStep);
+        logger.logStep("Step 11: Chấp nhận điều khoản", previousStep);
+
+        previousStep = await Step12("//button[@id='register-button']", driver, previousStep);
+        logger.logStep("Step 12: Nhấn vào nút Đăng ký", previousStep);
         logger.logStep("Step 13: Kiểm tra kết quả trả về", await checkRegisterEmty01(driver));
 
         await driver.sleep(10000);
@@ -148,20 +196,45 @@ var TestRegisterEmpty01 = async function (driver) {
 var TestRegisterEmpty02 = async function (driver) {
     let regEmpty02 = await readGlobalData("register", "REG-EMPTY02");
     let logger = new ReportLogger("REG-EMPTY02", regEmpty02.data);
-
+    let previousStep = true;
     try {
-        logger.logStep("Step 1: Truy cập trang chủ", await Step1(driver));
-        logger.logStep("Step 2: Nhấn vào nút đăng nhập", await Step2(driver));
-        logger.logStep("Step 3: Nhấn vào nút đăng ký", await Step3(driver));
-        logger.logStep("Step 4: Nhập Họ", await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regEmpty02.data.firstName));
-        logger.logStep("Step 5: Nhập Tên", await StepInputField("//input[@id='RegisterForm-LastName']", driver, regEmpty02.data.lastName));
-        logger.logStep("Step 6: Nhập Số điện thoại", await StepInputField("//input[@id='RegisterForm-phone']", driver, regEmpty02.data.phoneNumber));
-        logger.logStep("Step 7: Chọn Giới tính", await StepComboBox("//select[@id='gender']", driver, regEmpty02.data.sex));
-        logger.logStep("Step 8: Nhập Email", await StepInputField("//input[@id='RegisterForm-email']", driver, regEmpty02.data.email));
-        logger.logStep("Step 9: Nhập Mật khẩu", await StepInputField("//input[@id='RegisterForm-password']", driver, regEmpty02.data.password));
-        logger.logStep("Step 10: Nhập lại Mật khẩu", await StepInputField("//input[@id='confirm-password']", driver, regEmpty02.data.repassword));
-        logger.logStep("Step 11: Chấp nhận điều khoản", await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver));
-        logger.logStep("Step 12: Nhấn vào nút Đăng ký", await Step12("//button[@id='register-button']", driver));
+        previousStep = await Step1(driver);
+        logger.logStep("Step 1: Truy cập trang chủ", previousStep);
+
+        previousStep = await Step2(driver, previousStep);
+        logger.logStep("Step 2: Nhấn vào nút đăng nhập", previousStep);
+
+        previousStep = await Step3(driver, previousStep);
+        logger.logStep("Step 3: Nhấn vào nút đăng ký", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regEmpty02.data.firstName, previousStep);
+        logger.logStep("Step 4: Nhập Họ", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-LastName']", driver, regEmpty02.data.lastName, previousStep);
+        logger.logStep("Step 5: Nhập Tên", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-phone']", driver, regEmpty02.data.phoneNumber, previousStep);
+        logger.logStep("Step 6: Nhập Số điện thoại", previousStep);
+
+        previousStep = await StepComboBox("//select[@id='gender']", driver, regEmpty02.data.sex, previousStep);
+        logger.logStep("Step 7: Chọn Giới tính", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-email']", driver, regEmpty02.data.email, previousStep);
+        logger.logStep("Step 8: Nhập Email", previousStep);
+
+        previousStep = await StepInputField("//input[@id='RegisterForm-password']", driver, regEmpty02.data.password, previousStep);
+        logger.logStep("Step 9: Nhập Mật khẩu", previousStep);
+
+        previousStep = await StepInputField("//input[@id='confirm-password']", driver, regEmpty02.data.repassword, previousStep);
+        logger.logStep("Step 10: Nhập lại Mật khẩu", previousStep);
+
+        previousStep = await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver, previousStep);
+        logger.logStep("Step 11: Chấp nhận điều khoản", previousStep);
+
+        previousStep = await Step12("//button[@id='register-button']", driver, previousStep);
+        logger.logStep("Step 12: Nhấn vào nút Đăng ký", previousStep);
+
+
         logger.logStep("Step 13: Kiểm tra kết quả trả về", await checkRegisterEmty02(driver));
 
         await driver.sleep(10000);
@@ -175,7 +248,7 @@ var TestRegisterEmpty02 = async function (driver) {
 var TestRegisterError01 = async function (driver) {
     let regErr01 = await readGlobalData("register", "REG-ERR01");
     let logger = new ReportLogger("REG-ERR01", regErr01.data);
-
+    let previousStep = true;
     try {
         for (let item of regErr01.data.phoneNumber) {
             let phoneId = item.id;
@@ -191,18 +264,41 @@ var TestRegisterError01 = async function (driver) {
             logger.steps = [];
             logger.isBlocked = false;
 
-            logger.logStep("Step 1: Truy cập trang chủ", await Step1(driver));
-            logger.logStep("Step 2: Nhấn vào nút đăng nhập", await Step2(driver));
-            logger.logStep("Step 3: Nhấn vào nút đăng ký", await Step3(driver));
-            logger.logStep("Step 4: Nhập Họ", await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regErr01.data.firstName));
-            logger.logStep("Step 5: Nhập Tên", await StepInputField("//input[@id='RegisterForm-LastName']", driver, regErr01.data.lastName));
-            logger.logStep("Step 6: Nhập Số điện thoại", await StepInputField("//input[@id='RegisterForm-phone']", driver, phoneValue));
-            logger.logStep("Step 7: Chọn Giới tính", await StepComboBox("//select[@id='gender']", driver, regErr01.data.sex));
-            logger.logStep("Step 8: Nhập Email", await StepInputField("//input[@id='RegisterForm-email']", driver, regErr01.data.email));
-            logger.logStep("Step 9: Nhập Mật khẩu", await StepInputField("//input[@id='RegisterForm-password']", driver, regErr01.data.password));
-            logger.logStep("Step 10: Nhập lại Mật khẩu", await StepInputField("//input[@id='confirm-password']", driver, regErr01.data.repassword));
-            logger.logStep("Step 11: Chấp nhận điều khoản", await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver));
-            logger.logStep("Step 12: Nhấn vào nút Đăng ký", await Step12("//button[@id='register-button']", driver));
+            previousStep = await Step1(driver);
+            logger.logStep("Step 1: Truy cập trang chủ", previousStep);
+
+            previousStep = await Step2(driver, previousStep);
+            logger.logStep("Step 2: Nhấn vào nút đăng nhập", previousStep);
+
+            previousStep = await Step3(driver, previousStep);
+            logger.logStep("Step 3: Nhấn vào nút đăng ký", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regErr01.data.firstName, previousStep);
+            logger.logStep("Step 4: Nhập Họ", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-LastName']", driver, regErr01.data.lastName, previousStep);
+            logger.logStep("Step 5: Nhập Tên", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-phone']", driver, phoneValue, previousStep);
+            logger.logStep("Step 6: Nhập Số điện thoại", previousStep);
+
+            previousStep = await StepComboBox("//select[@id='gender']", driver, regErr01.data.sex, previousStep);
+            logger.logStep("Step 7: Chọn Giới tính", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-email']", driver, regErr01.data.email, previousStep);
+            logger.logStep("Step 8: Nhập Email", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-password']", driver, regErr01.data.password, previousStep);
+            logger.logStep("Step 9: Nhập Mật khẩu", previousStep);
+
+            previousStep = await StepInputField("//input[@id='confirm-password']", driver, regErr01.data.repassword, previousStep);
+            logger.logStep("Step 10: Nhập lại Mật khẩu", previousStep);
+
+            previousStep = await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver, previousStep);
+            logger.logStep("Step 11: Chấp nhận điều khoản", previousStep);
+
+            previousStep = await Step12("//button[@id='register-button']", driver, previousStep);
+            logger.logStep("Step 12: Nhấn vào nút Đăng ký", previousStep);
 
             let result = await checkRegisterErr01(driver);
             logger.logStep(`Step 13: Kiểm tra kết quả (${phoneId})`, result);
@@ -220,7 +316,7 @@ var TestRegisterError01 = async function (driver) {
 var TestRegisterError02 = async function (driver) {
     let regErr02 = await readGlobalData("register", "REG-ERR02");
     let logger = new ReportLogger("REG-ERR02", regErr02.data);
-
+    let previousStep = true;
     try {
         for (let item of regErr02.data.email) {
             let emailId = item.id;
@@ -236,18 +332,41 @@ var TestRegisterError02 = async function (driver) {
             logger.steps = [];
             logger.isBlocked = false;
 
-            logger.logStep("Step 1: Truy cập trang chủ", await Step1(driver));
-            logger.logStep("Step 2: Nhấn vào nút đăng nhập", await Step2(driver));
-            logger.logStep("Step 3: Nhấn vào nút đăng ký", await Step3(driver));
-            logger.logStep("Step 4: Nhập Họ", await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regErr02.data.firstName));
-            logger.logStep("Step 5: Nhập Tên", await StepInputField("//input[@id='RegisterForm-LastName']", driver, regErr02.data.lastName));
-            logger.logStep("Step 6: Nhập Số điện thoại", await StepInputField("//input[@id='RegisterForm-phone']", driver, regErr02.data.phoneNumber));
-            logger.logStep("Step 7: Chọn Giới tính", await StepComboBox("//select[@id='gender']", driver, regErr02.data.sex));
-            logger.logStep("Step 8: Nhập Email", await StepInputField("//input[@id='RegisterForm-email']", driver, emailValue));
-            logger.logStep("Step 9: Nhập Mật khẩu", await StepInputField("//input[@id='RegisterForm-password']", driver, regErr02.data.password));
-            logger.logStep("Step 10: Nhập lại Mật khẩu", await StepInputField("//input[@id='confirm-password']", driver, regErr02.data.repassword));
-            logger.logStep("Step 11: Chấp nhận điều khoản", await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver));
-            logger.logStep("Step 12: Nhấn vào nút Đăng ký", await Step12("//button[@id='register-button']", driver));
+            previousStep = await Step1(driver);
+            logger.logStep("Step 1: Truy cập trang chủ", previousStep);
+
+            previousStep = await Step2(driver, previousStep);
+            logger.logStep("Step 2: Nhấn vào nút đăng nhập", previousStep);
+
+            previousStep = await Step3(driver, previousStep);
+            logger.logStep("Step 3: Nhấn vào nút đăng ký", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-FirstName']", driver, regErr02.data.firstName, previousStep);
+            logger.logStep("Step 4: Nhập Họ", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-LastName']", driver, regErr02.data.lastName, previousStep);
+            logger.logStep("Step 5: Nhập Tên", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-phone']", driver, regErr02.data.phoneNumber, previousStep);
+            logger.logStep("Step 6: Nhập Số điện thoại", previousStep);
+
+            previousStep = await StepComboBox("//select[@id='gender']", driver, regErr02.data.sex, previousStep);
+            logger.logStep("Step 7: Chọn Giới tính", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-email']", driver, emailValue, previousStep)
+            logger.logStep("Step 8: Nhập Email", previousStep);
+
+            previousStep = await StepInputField("//input[@id='RegisterForm-password']", driver, regErr02.data.password, previousStep);
+            logger.logStep("Step 9: Nhập Mật khẩu", previousStep);
+
+            previousStep = await StepInputField("//input[@id='confirm-password']", driver, regErr02.data.repassword, previousStep);
+            logger.logStep("Step 10: Nhập lại Mật khẩu", previousStep);
+
+            previousStep = await StepCheckBox("//input[@name='check-box'][@id='agree-terms-acc']", driver, previousStep);
+            logger.logStep("Step 11: Chấp nhận điều khoản", previousStep);
+
+            previousStep = await Step12("//button[@id='register-button']", driver, previousStep);
+            logger.logStep("Step 12: Nhấn vào nút Đăng ký", previousStep);
 
             let result = await checkRegisterErr01(driver);
             logger.logStep(`Step 13: Kiểm tra kết quả (${emailId})`, result);
@@ -281,15 +400,19 @@ var Step1 = async function(driver) {
 };
 
 // Step 2
-var Step2 = async function(driver) {
+var Step2 = async function(driver, previousStep) {
     var isSuccess = false
     try{
-        var loginB = await driver.wait(
-            until.elementLocated(By.xpath("//a[@href='/account/login']//*[name()='svg']//*[name()='path' and contains(@fill-rule,'evenodd')]")),
-            10000
-        );
-        await loginB.click();
-        isSuccess = true;
+        if(previousStep){
+            var loginB = await driver.wait(
+                until.elementLocated(By.xpath("//a[@href='/account/login']//*[name()='svg']//*[name()='path' and contains(@fill-rule,'evenodd')]")),
+                10000
+            );
+            await loginB.click();
+            isSuccess = true;
+        };
+        
+        
     }
     catch(error){
         isSuccess = false;
@@ -302,15 +425,19 @@ var Step2 = async function(driver) {
 };
 
 // Step 3
-var Step3 = async function(driver) {
+var Step3 = async function(driver, previousStep) {
     var isSuccess = false
     try{
-        var regisB = await driver.wait(
-            until.elementLocated(By.xpath("//a[contains(text(),'Đăng ký tài khoản')]")),
-            10000
-        );
-        await regisB.click();
-        isSuccess = true;
+        if(previousStep){
+            var regisB = await driver.wait(
+                until.elementLocated(By.xpath("//a[contains(text(),'Đăng ký tài khoản')]")),
+                10000
+            );
+            await regisB.click();
+            isSuccess = true;
+        };
+        
+        
     }
     catch(error){
         isSuccess = false;
@@ -322,16 +449,18 @@ var Step3 = async function(driver) {
     }
 };
 
-var StepInputField = async function(xpath, driver, key) {
+var StepInputField = async function(xpath, driver, key, previousStep) {
     var isSuccess = false
     try{
-        var textField = await driver.wait(
-            until.elementLocated(By.xpath(xpath)),
-            10000
-        );
-        await textField.clear();
-        await textField.sendKeys(key);
-        isSuccess = true;
+        if(previousStep){
+            var textField = await driver.wait(
+                until.elementLocated(By.xpath(xpath)),
+                10000
+            );
+            await textField.clear();
+            await textField.sendKeys(key);
+            isSuccess = true;
+        };
     }
     catch(error){
         isSuccess = false;
@@ -343,25 +472,28 @@ var StepInputField = async function(xpath, driver, key) {
     }
 };
 
-var StepComboBox = async function(xpath, driver, item) {
+var StepComboBox = async function(xpath, driver, item, previousStep) {
     var isSuccess = false
     try{
-        var comboBox = await driver.wait(
-            until.elementLocated(By.xpath(xpath)),
-            10000
-        );
-        await comboBox.click();
-        var options = []
-        options = await comboBox.findElements(By.tagName("option"));
-        for (let option of options) {
-            let text = await option.getText();
-            if (text === item) {
-              await option.click();
-              break;
-            }
-          }
-          await comboBox.click();
-        isSuccess = true;
+        if(previousStep){
+            var comboBox = await driver.wait(
+                until.elementLocated(By.xpath(xpath)),
+                10000
+            );
+            await comboBox.click();
+            var options = []
+            options = await comboBox.findElements(By.tagName("option"));
+            for (let option of options) {
+                let text = await option.getText();
+                if (text === item) {
+                  await option.click();
+                  break;
+                }
+              }
+              await comboBox.click();
+              isSuccess = true;
+        };
+        
     }
     catch(error){
         isSuccess = false;
@@ -373,15 +505,19 @@ var StepComboBox = async function(xpath, driver, item) {
     }
 };
 
-var StepCheckBox = async function(xpath, driver) {
+var StepCheckBox = async function(xpath, driver, previousStep) {
     var isSuccess = false
     try{
-        var checkBox = await driver.wait(
-            until.elementLocated(By.xpath(xpath)),
-            10000
-        );
-        await checkBox.click();
-        isSuccess = true;
+        if(previousStep){
+            var checkBox = await driver.wait(
+                until.elementLocated(By.xpath(xpath)),
+                10000
+            );
+            await checkBox.click();
+            isSuccess = true;
+        };
+        
+        
     }
     catch(error){
         isSuccess = false;
@@ -393,15 +529,19 @@ var StepCheckBox = async function(xpath, driver) {
     }
 };
 
-var Step12 = async function(xpath, driver) {
+var Step12 = async function(xpath, driver, previousStep) {
     var isSuccess = false
     try{
-        var regB = await driver.wait(
-            until.elementLocated(By.xpath(xpath)),
-            10000
-        );
-        await regB.click();
-        isSuccess = true;
+        if(previousStep)
+        {
+            var regB = await driver.wait(
+                until.elementLocated(By.xpath(xpath)),
+                10000
+            );
+            await regB.click();
+            isSuccess = true;
+        };
+        
     }
     catch(error){
         isSuccess = false;

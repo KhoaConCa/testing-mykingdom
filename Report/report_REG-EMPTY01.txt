@@ -13,15 +13,15 @@ Thứ tự các bước:
 - Bước 1: Succeed
 - Bước 2: Succeed
 - Bước 3: Succeed
-- Bước 4: Succeed
-- Bước 5: Succeed
-- Bước 6: Succeed
-- Bước 7: Succeed
-- Bước 8: Succeed
-- Bước 9: Succeed
-- Bước 10: Succeed
-- Bước 11: Succeed
-- Bước 12: Succeed
-- Bước 13: Failed
+- Bước 4: Failed
+- Bước 5: Blocked
+- Bước 6: Blocked
+- Bước 7: Blocked
+- Bước 8: Blocked
+- Bước 9: Blocked
+- Bước 10: Blocked
+- Bước 11: Blocked
+- Bước 12: Blocked
+- Bước 13: Blocked
 Tổng kết: Thất bại
 ========================
